@@ -13,6 +13,8 @@
 		4056440428B5011800E2F93D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4056440228B5011800E2F93D /* Main.storyboard */; };
 		4056440628B5011B00E2F93D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4056440528B5011B00E2F93D /* Assets.xcassets */; };
 		4056440928B5011B00E2F93D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4056440728B5011B00E2F93D /* LaunchScreen.storyboard */; };
+		4056441328B504D600E2F93D /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4056441128B504D600E2F93D /* Cell.swift */; };
+		4056441428B504D600E2F93D /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4056441228B504D600E2F93D /* Cell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		4056440528B5011B00E2F93D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4056440828B5011B00E2F93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4056440A28B5011B00E2F93D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4056441128B504D600E2F93D /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		4056441228B504D600E2F93D /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		405643FB28B5011800E2F93D /* Balina */ = {
 			isa = PBXGroup;
 			children = (
+				4056441028B504B100E2F93D /* Cells */,
 				405643FC28B5011800E2F93D /* AppDelegate.swift */,
 				405643FE28B5011800E2F93D /* SceneDelegate.swift */,
 				4056440028B5011800E2F93D /* ViewController.swift */,
@@ -65,6 +70,15 @@
 				4056440A28B5011B00E2F93D /* Info.plist */,
 			);
 			path = Balina;
+			sourceTree = "<group>";
+		};
+		4056441028B504B100E2F93D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4056441128B504D600E2F93D /* Cell.swift */,
+				4056441228B504D600E2F93D /* Cell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4056440928B5011B00E2F93D /* LaunchScreen.storyboard in Resources */,
+				4056441428B504D600E2F93D /* Cell.xib in Resources */,
 				4056440628B5011B00E2F93D /* Assets.xcassets in Resources */,
 				4056440428B5011800E2F93D /* Main.storyboard in Resources */,
 			);
@@ -139,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4056440128B5011800E2F93D /* ViewController.swift in Sources */,
+				4056441328B504D600E2F93D /* Cell.swift in Sources */,
 				405643FD28B5011800E2F93D /* AppDelegate.swift in Sources */,
 				405643FF28B5011800E2F93D /* SceneDelegate.swift in Sources */,
 			);
