@@ -17,15 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5n-HR-LJ6">
-                                <rect key="frame" x="0.0" y="246" width="414" height="414"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xai-j2-vdD"/>
-                                </connections>
-                            </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="glP-QB-JyE">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="glP-QB-JyE">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="VGn-j5-3Tz">
@@ -49,12 +41,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Y5n-HR-LJ6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2AR-N8-WTt"/>
-                            <constraint firstItem="Y5n-HR-LJ6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2cb-Ze-4Q5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="glP-QB-JyE" secondAttribute="bottom" id="367-4D-wQ3"/>
                             <constraint firstItem="glP-QB-JyE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6if-Os-poJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y5n-HR-LJ6" secondAttribute="bottom" constant="202" id="EVe-4f-MjM"/>
-                            <constraint firstItem="Y5n-HR-LJ6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="202" id="KDW-A8-P80"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="glP-QB-JyE" secondAttribute="trailing" id="RrZ-Wa-sGX"/>
                             <constraint firstItem="glP-QB-JyE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="i12-5M-6fA"/>
                         </constraints>

@@ -49,7 +49,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         let content = contents[indexPath.item]
-        id = content!.id
         let text = content!.image
         cell.setupCell(text: text!)
         return cell
@@ -62,19 +61,20 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-}
-
-//working with camera + POST
-extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
-
-    @IBAction func buttonPressed(_ sender: Any) {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        id = indexPath.item
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
-    
+}
+
+//POST
+extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
