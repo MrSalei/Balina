@@ -89,7 +89,7 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
         let parameters: [String:AnyHashable] = [
             "name":"Saley Ilya Igorevich",
             "photo":"\(imageStr)",
-            "typeId":"\(id)"
+            "typeId": id
         ]
         var postRequest = URLRequest(url: URL(string: "https://junior.balinasoft.com/api/v2/photo")!)
         postRequest.httpMethod = "POST"
