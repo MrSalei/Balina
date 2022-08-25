@@ -15,11 +15,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         downloadPhotos(url: URL(string: "https://junior.balinasoft.com/api/v2/photo/type")!)
         Thread.sleep(forTimeInterval: 2)
         self.collectionView.register(UINib(nibName: "Cell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+    }
+    
+    private func setup() {
+        view.backgroundColor = .blue
+        collectionView.backgroundColor = .blue
     }
 
     private func downloadPhotos(url: URL) {
@@ -82,7 +88,7 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
         let imageStr: String = imageData.base64EncodedString()
         let parameters: [String:AnyHashable] = [
             "name":"Saley Ilya Igorevich",
-            "photo":imageStr,
+            "photo":"\(imageStr)",
             "typeId":"\(id)"
         ]
         var postRequest = URLRequest(url: URL(string: "https://junior.balinasoft.com/api/v2/photo")!)
@@ -90,7 +96,7 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
         postRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
         postRequest.httpBody = httpBody
-        let task = URLSession.shared.dataTask(with: postRequest) { data, response, error in
+        URLSession.shared.dataTask(with: postRequest) { data, response, error in
             guard let data = data, error == nil else { return }
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
@@ -99,7 +105,6 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
             catch{
                 print(error)
             }
-        }
-        task.resume()
+        }.resume()
     }
 }
