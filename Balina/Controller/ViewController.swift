@@ -24,8 +24,8 @@ class ViewController: UIViewController {
     }
     
     private func setup() {
-        view.backgroundColor = .cyan
-        collectionView.backgroundColor = .cyan
+        view.backgroundColor = .lightGray
+        collectionView.backgroundColor = .lightGray
     }
 
     private func downloadPhotos(url: URL) {
