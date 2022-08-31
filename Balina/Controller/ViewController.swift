@@ -24,8 +24,8 @@ class ViewController: UIViewController {
     }
     
     private func setup() {
-        view.backgroundColor = .blue
-        collectionView.backgroundColor = .blue
+        view.backgroundColor = .cyan
+        collectionView.backgroundColor = .cyan
     }
 
     private func downloadPhotos(url: URL) {
@@ -35,9 +35,7 @@ class ViewController: UIViewController {
             if let error = error { print(error) }
             if let data = data, let welcome = try? JSONDecoder().decode(Welcome.self, from: data) {
                for i in welcome.content {
-                   if i.image != nil {
-                       self.contents.append(i)
-                   }
+                    self.contents.append(i)
                }
             }
         }
@@ -55,8 +53,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         let content = contents[indexPath.item]
-        let text = content!.image
-        cell.setupCell(text: text!)
+        if let text = content?.image, let name = content?.name {
+            cell.setupCell(text: text, name: name)
+        }
+        else if let name = content?.name {
+            cell.setUpName(name: name)
+        }
         return cell
     }
     

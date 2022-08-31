@@ -17,22 +17,33 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zO2-bX-PUc">
-                        <rect key="frame" x="0.0" y="0.0" width="144" height="108"/>
+                        <rect key="frame" x="0.0" y="20" width="144" height="88"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F5-2r-wpD">
+                        <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="zO2-bX-PUc" secondAttribute="trailing" id="37Y-xi-tHw"/>
-                <constraint firstItem="zO2-bX-PUc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8pC-7p-1De"/>
+                <constraint firstItem="zO2-bX-PUc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="8pC-7p-1De"/>
+                <constraint firstItem="zO2-bX-PUc" firstAttribute="top" secondItem="6F5-2r-wpD" secondAttribute="bottom" constant="4" id="9M0-ZN-lHK"/>
+                <constraint firstItem="6F5-2r-wpD" firstAttribute="trailing" secondItem="zO2-bX-PUc" secondAttribute="trailing" id="IGd-3y-lEV"/>
                 <constraint firstItem="zO2-bX-PUc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="IVO-hr-sl7"/>
+                <constraint firstItem="6F5-2r-wpD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eCP-d9-oS6"/>
                 <constraint firstAttribute="bottom" secondItem="zO2-bX-PUc" secondAttribute="bottom" id="i5i-wM-vlk"/>
+                <constraint firstItem="6F5-2r-wpD" firstAttribute="leading" secondItem="zO2-bX-PUc" secondAttribute="leading" id="ndI-0i-9XS"/>
             </constraints>
             <size key="customSize" width="144" height="108"/>
             <connections>
                 <outlet property="image" destination="zO2-bX-PUc" id="jN2-EJ-RY1"/>
+                <outlet property="nameLabel" destination="6F5-2r-wpD" id="pky-wc-KBy"/>
             </connections>
-            <point key="canvasLocation" x="119" y="80"/>
+            <point key="canvasLocation" x="118.84057971014494" y="79.6875"/>
         </collectionViewCell>
     </objects>
 </document>

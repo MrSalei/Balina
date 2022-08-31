@@ -11,6 +11,7 @@ class Cell: UICollectionViewCell{
 
     @IBOutlet weak var image: UIImageView!
     
+    @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -19,9 +20,14 @@ class Cell: UICollectionViewCell{
         super.prepareForReuse()
         self.image.image = nil
     }
+    
+    func setUpName(name: String) {
+        nameLabel.text = name
+    }
 
-    func setupCell(text: String) {
+    func setupCell(text: String, name: String) {
         downloadImage(from: URL(string: text)!)
+        nameLabel.text = name
     }
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
