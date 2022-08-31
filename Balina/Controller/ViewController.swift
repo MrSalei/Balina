@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import Alamofire
 
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -87,26 +88,21 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
         imagePicker.dismiss(animated: true, completion: nil)
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let imageData: Data = image.jpegData(compressionQuality: 0.1) ?? Data()
-        let imageStr: String = imageData.base64EncodedString()
-        let parameters: [String:AnyHashable] = [
-            "name":"Saley Ilya Igorevich",
-            "photo":"\(imageStr)",
-            "typeId": id
-        ]
-        var postRequest = URLRequest(url: URL(string: "https://junior.balinasoft.com/api/v2/photo")!)
-        postRequest.httpMethod = "POST"
-        postRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
-        postRequest.httpBody = httpBody
-        URLSession.shared.dataTask(with: postRequest) { data, response, error in
-            guard let data = data, error == nil else { return }
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append("Saley Ilya Igorevich".data(using: String.Encoding.utf8)!, withName: "name")
+            multipartFormData.append(imageData, withName: "photo",fileName: "photo.jpg", mimeType: "photo/jpg")
+            multipartFormData.append("\(self.id)".data(using: String.Encoding.utf8)!, withName: "typeId")
+            },
+        to:"https://junior.balinasoft.com/api/v2/photo")
+        { (result) in
+            switch result {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        print(response.result.value as Any)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
             }
-            catch{
-                print(error)
-            }
-        }.resume()
+        }
     }
 }
