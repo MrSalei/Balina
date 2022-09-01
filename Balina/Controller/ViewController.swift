@@ -76,7 +76,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
     }
 }
@@ -85,15 +85,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
 extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let image = info[.originalImage] as! UIImage
         let imageData: Data = image.jpegData(compressionQuality: 0.1) ?? Data()
+        imagePicker.dismiss(animated: true, completion: nil)
+        let headers: HTTPHeaders = [
+            "accept": "*/*",
+            "Content-type": "multipart/form-data"
+        ]
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append("Saley Ilya Igorevich".data(using: String.Encoding.utf8)!, withName: "name")
-            multipartFormData.append(imageData, withName: "photo",fileName: "photo.jpg", mimeType: "photo/jpg")
+            multipartFormData.append(imageData, withName: "photo",fileName: "photo.png", mimeType: "image/png")
             multipartFormData.append("\(self.id)".data(using: String.Encoding.utf8)!, withName: "typeId")
             },
-        to:"https://junior.balinasoft.com/api/v2/photo")
+            to: URL(string: "https://junior.balinasoft.com/api/v2/photo")!, method: .post, headers: headers)
         { (result) in
             switch result {
                 case .success(let upload, _, _):
